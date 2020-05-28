@@ -18,6 +18,7 @@ Player::Player(float pos_x, float pos_y, float size_x, float size_y)
 	// zrobic funkcje ktora zwraca nam pozycje poczatkowa intRect
 	// auto beginPostion = getPosition(3, 4);
 	int a = 4;
+	int b = 5;
 }
 
 
