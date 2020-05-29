@@ -22,7 +22,7 @@ public:
 	//void drawTo(sf::RenderWindow& gameWindow);
 	void move(float x, float y);
 	void update(const sf::Time& elapsed);
-
+	
 	 
 };
 
