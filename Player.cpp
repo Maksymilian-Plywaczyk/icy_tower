@@ -18,7 +18,7 @@ Player::Player(float pos_x, float pos_y, float size_x, float size_y)
 	// zrobic funkcje ktora zwraca nam pozycje poczatkowa intRect
 	// auto beginPostion = getPosition(3, 4);
 	
-	
+		
 }
 
 
@@ -54,6 +54,7 @@ void Player::update(const sf::Time& elapsed) {
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && player.getGlobalBounds().left > 0) {
 			move(-15, 0);
+			std::cout << player.getPosition().x << " " << player.getPosition().y << std::endl;
 			textureRange = sf::Vector2f(3, 6);
 			leftFace = true;
 		

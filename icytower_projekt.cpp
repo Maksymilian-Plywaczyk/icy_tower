@@ -1,12 +1,15 @@
 ﻿#include <SFML/Graphics.hpp>
 #include "Player.h"
 #include <iostream>
+#include "Platform.h"
 
 int main()
 {
-
-    sf::RenderWindow window(sf::VideoMode(720, 720), "SFML works!");
+     const int videoWidht = 720;
+     const int videoHeight = 1000;
+    sf::RenderWindow window(sf::VideoMode(videoWidht,videoHeight), "SFML works!");
     Player player(300, 300, 100, 150);
+    Platform platform(0,900,videoWidht-10,100);
 
     sf::Clock timer;
     
@@ -26,6 +29,7 @@ int main()
 
         window.clear();
         window.draw(player);
+        window.draw(platform);
         window.display();
     }
 
