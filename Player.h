@@ -15,7 +15,6 @@ private:
 	unsigned int currentTexturePos = 0;
 	sf::Vector2f characterSize;
 	
-
 public:
 	Player(float pos_x, float pos_y, float size_x, float size_y);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

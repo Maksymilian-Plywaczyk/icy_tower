@@ -46,7 +46,7 @@ void Player::update(const sf::Time& elapsed) {
 		
 		if (player.getGlobalBounds().left<=720-player.getSize().x  && sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 			move(15, 0);
-			std::cout << player.getPosition().x<<" "<< player.getPosition().y << std::endl;
+			
 			textureRange = sf::Vector2f(3, 6);
 			leftFace = false;
 			
@@ -54,20 +54,48 @@ void Player::update(const sf::Time& elapsed) {
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && player.getGlobalBounds().left > 0) {
 			move(-15, 0);
-			std::cout << player.getPosition().x << " " << player.getPosition().y << std::endl;
+		
 			textureRange = sf::Vector2f(3, 6);
 			leftFace = true;
 		
 		}
+		
+		
 		else {
 			textureRange = sf::Vector2f(0, 2);
 		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		{
+			move(0, -5);
+			textureRange = sf::Vector2f(7, 7);
+
+		}
+		else if (player.getPosition().y <= 760)
+		{
+			move(0, 5);
+		}
+		if (player.getGlobalBounds().left <= 720 - player.getSize().x && sf::Keyboard::isKeyPressed(sf::Keyboard::D) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+			move(15, 0);
+			textureRange = sf::Vector2f(8, 8);
+			leftFace = false;
+
+
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && player.getGlobalBounds().left > 0) {
+			move(-15, 0);
+
+			textureRange = sf::Vector2f(8, 8);
+			leftFace = true;
+
+		}
+		
 		currentTexturePos++;
 
 
 		if (currentTexturePos > textureRange.y) {
 			currentTexturePos = textureRange.x;
 		}
+		
 		if (leftFace)
 		{
 			
