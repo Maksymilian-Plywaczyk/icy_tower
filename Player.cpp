@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Platform.h"
 
 Player::Player(float pos_x, float pos_y, float size_x, float size_y) 
 {
@@ -41,7 +42,8 @@ void Player::move(float x, float y) {
 void Player::update(const sf::Time& elapsed) {
 	auto pobranyCzas = elapsed.asMilliseconds();
 	bool leftFace = false;
-	//Ograniczyc czas do 1sek
+
+	//animacja ruchu
 	if (pobranyCzas >= czasOstatniegoPrzesuniecia + czasPrzesunieciaMilisec) { // wchodzi do ifa co 1sek 
 		
 		if (player.getGlobalBounds().left<=720-player.getSize().x  && sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
@@ -64,15 +66,19 @@ void Player::update(const sf::Time& elapsed) {
 		else {
 			textureRange = sf::Vector2f(0, 2);
 		}
+
+		// prowizoryczna grawitacja
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 		{
 			move(0, -5);
+			gravity = false;
 			textureRange = sf::Vector2f(7, 7);
 
 		}
-		else if (player.getPosition().y <= 760)
+		else
 		{
-			move(0, 5);
+			gravity = true;
+			
 		}
 		if (player.getGlobalBounds().left <= 720 - player.getSize().x && sf::Keyboard::isKeyPressed(sf::Keyboard::D) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 			move(15, 0);
@@ -104,10 +110,31 @@ void Player::update(const sf::Time& elapsed) {
 		else {
 			this->player.setTextureRect(sf::IntRect((currentTexturePos) * characterSize.x, 0, characterSize.x, characterSize.y));
 		}
+		//kolizja nog z podloga
+		
+		if (gravity)
+		{
+			move(0, 5);
+		}
 
 		
 
 
 		czasOstatniegoPrzesuniecia = pobranyCzas;
+	}
+}
+
+
+void Player::collision(sf::Vector2f pozycjaPlatformy, sf::Vector2f rozmiarPlatformy) {
+	if(player.getGlobalBounds().left
+	{
+		gravity = false;
+		//std::cout << "kolizcja";
+		std::cout << gravity;
+		
+	}
+	else
+	{	
+		gravity = true;
 	}
 }

@@ -12,12 +12,10 @@ int main()
     const int videoWidht = 720;
     const int videoHeight = 1000;
     sf::RenderWindow window(sf::VideoMode(videoWidht,videoHeight), "SFML works!");
-    Player player(videoWidht/2, 760, 100, 150);
+    Player player(videoWidht/2, 500, 100, 150);
     Platform platform(0,900,videoWidht,100);
   
-   /* int a = 4;
-    int b = 5;*/
-    /*std::vector<int>zmienneINT;*/
+   
     std::list<Platform*>platforms;
     platforms.push_back(new Platform(0, 900, videoWidht, 100));
    
@@ -38,6 +36,13 @@ int main()
         }
         //update
         player.update(timer.getElapsedTime());
+        for (auto p : platforms)
+        {
+            player.collision(p->getPosition(), p->getSize());
+                   
+        }
+        
+        
         
        while (pozTworz > 0) {
             pozTworz -= odleglosc;

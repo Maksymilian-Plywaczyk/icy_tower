@@ -1,10 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Platform.h"
 
 class Player : 
 	public sf::Drawable
 {
+	
 private:
 	sf::RectangleShape player;
 	sf::Vector2f size;
@@ -14,6 +16,7 @@ private:
 	sf::Vector2f textureRange = {0, 0};
 	unsigned int currentTexturePos = 0;
 	sf::Vector2f characterSize;
+	bool gravity = false;
 	
 public:
 	Player(float pos_x, float pos_y, float size_x, float size_y);
@@ -21,6 +24,7 @@ public:
 	//void drawTo(sf::RenderWindow& gameWindow);
 	void move(float x, float y);
 	void update(const sf::Time& elapsed);
+	void collision(sf::Vector2f,sf::Vector2f);
 	
 	 
 };

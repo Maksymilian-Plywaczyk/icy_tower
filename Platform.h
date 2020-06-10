@@ -7,7 +7,9 @@
 
 class Platform:
 		public sf::Drawable
+
 {
+	
 private:
 
 	sf::RectangleShape platform;
@@ -21,7 +23,9 @@ private:
 public:
 	Platform(float pos_x, float pos_y, float size_x, float size_y);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	
+	const sf::Vector2f getPosition();
+	const sf::Vector2f getSize();
+	Platform();
 
 };
 

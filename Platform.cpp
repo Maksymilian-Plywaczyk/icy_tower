@@ -18,7 +18,16 @@ void Platform::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(platform,states);
 
 }
+const sf::Vector2f Platform::getPosition() {
+	
+	return platform.getPosition();
 
+}
+const sf::Vector2f Platform::getSize() {
+
+	return platform.getSize();
+
+}
 
 	
 
